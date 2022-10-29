@@ -8,8 +8,10 @@ def jprint(obj):
     text = json.dumps(obj, sort_keys=True, indent= 4)
     print(text)
 
-jprint(response.json())
-print(response.status_code)
+json_data = json.loads(response.text)
+jprint(json_data["response"]["data"][0])
+
+
 # app = Flask(__name__)
 
 # @app.route("/")
