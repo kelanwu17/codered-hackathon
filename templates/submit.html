@@ -1,0 +1,139 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+
+<div class="input-group">
+    <form action="/profile" method="post">
+    <label for="lang"> <span>{{submit.start}}</span> </label>
+        <select name="state" id="lang" style="width:240px">
+        <!--    <option value="none" selected disabled hidden>Select an Option</option>    -->
+        <option value="{{submit.start}}">  </option>
+        <option value="2001">2001</option>
+        <option value="2002">2002</option>
+        <option value="2003">2003</option>
+        <option value="2004">2004</option>
+        <option value="2005">2005</option>
+        <option value="2006">2006</option>
+        <option value="2007">2007</option>
+        <option value="2008">2008</option>
+        <option value="2009">2009</option>
+        <option value="2010">2010</option>
+        <option value="2011">2011</option>
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+
+        </select>
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="">-</span>
+    </div>
+    <label for="lang"> <span>{{submit.end}}</span> </label>
+        <select name="state" id="lang" style="width:240px">
+        <!--    <option value="none" selected disabled hidden>Select an Option</option>    -->
+        <option value="{{submit.end}}">  </option>
+        <option value="2001">2001</option>
+        <option value="2002">2002</option>
+        <option value="2003">2003</option>
+        <option value="2004">2004</option>
+        <option value="2005">2005</option>
+        <option value="2006">2006</option>
+        <option value="2007">2007</option>
+        <option value="2008">2008</option>
+        <option value="2009">2009</option>
+        <option value="2010">2010</option>
+        <option value="2011">2011</option>
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+
+        </select>
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="">-</span>
+    </div>
+    <label for="lang"> <span>{{submit.select}}</span> </label>
+        <select name="state" id="lang">
+        <!--    <option value="none" selected disabled hidden>Select an Option</option>    -->
+        <option value="{{submit.select}}">  </option>
+        <option value="gas pro">Number Of Gas Producing Oil Wells</option>
+        <option value="gas_withdr">Natural Gas Gross Withdrawals And Production</option>
+        <option value="oil_res">Crude Oil Proved Reserves</option>
+        <option value="oil_pro">Crude Oil Production</option>
+        </select>
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="">-</span>
+    </div>
+    <label for="lang"> <span>{{submit.state}}</span> </label>
+            <select name="state" id="lang">
+            <!--    <option value="none" selected disabled hidden>Select an Option</option>    -->
+            <option value="{{submit.state}}">  </option>
+                <option value="AL">AL</option>
+                <option value="AK">AK</option>
+                <option value="AZ">AZ</option>
+                <option value="AR">AR</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DE">DE</option>
+                <option value="DC">DC</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="HI">HI</option>
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="IA">IA</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="ME">ME</option>
+                <option value="MD">MD</option>
+                <option value="MA">MA</option>
+                <option value="MI">MI</option>
+                <option value="MN">MN</option>
+                <option value="MS">MS</option>
+                <option value="MO">MO</option>
+                <option value="MT">MT</option>
+                <option value="NE">NE</option>
+                <option value="NV">NV</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>
+                <option value="NY">NY</option>
+                <option value="NC">NC</option>
+                <option value="ND">ND</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PA">PA</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VT">VT</option>
+                <option value="VA">VA</option>
+                <option value="WA">WA</option>
+                <option value="WV">WV</option>
+                <option value="WI">WI</option>
+                <option value="WY">WY</option>
+            </select>
+            <p><input type="submit" class="btn btn-primary" value="Submit"></p>
+        </form>
+</div>
+{% endblock  %}
