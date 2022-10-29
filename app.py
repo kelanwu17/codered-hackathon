@@ -1,10 +1,20 @@
-from flask import Flask
+from flask import Flask, render_template
+import requests
+import json
+api_key = "lLhgwKk3K0bBy3WCT8kUPbNErsjjRcJjO8h5ZUs3"
+response = requests.get("https://api.eia.gov/v2/natural-gas/prod/oilwells/data/?api_key=lLhgwKk3K0bBy3WCT8kUPbNErsjjRcJjO8h5ZUs3")
 
-app = Flask(__name__)
+def jprint(obj):
+    text = json.dumps(obj, sort_keys=True, indent= 4)
+    print(text)
 
-@app.route("/")
-def home():
-    return "<p>Hello<p>"
+jprint(response.json())
+print(response.status_code)
+# app = Flask(__name__)
 
-if __name__ == "__main__":
-    app.run()
+# @app.route("/")
+# def home():
+#     return "<p>Hello<p>"
+
+# if __name__ == "__main__":
+#     app.run()
