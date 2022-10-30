@@ -1,12 +1,11 @@
-from flask import Flask, render_template, Markup, request, redirect, url_for
+from flask import Flask, render_template, Markup
 import requests
 import json
 import pandas
 
 #loading Oil Wells Data
-#loading Oil Wells Data
 api_key = "lLhgwKk3K0bBy3WCT8kUPbNErsjjRcJjO8h5ZUs3"
-response = requests.get("https://api.eia.gov/v2/natural-gas/prod/wells/data/?api_key=" + api_key + "&data[]=value")
+response = requests.get("https://api.eia.gov/v2/natural-gas/prod/oilwells/data/?api_key=lLhgwKk3K0bBy3WCT8kUPbNErsjjRcJjO8h5ZUs3")
 
 def jprint(obj):
     text = json.dumps(obj, sort_keys=True, indent= 4)
@@ -57,8 +56,7 @@ def submit():
         end = request.form['end']
         selecttype = request.form['selecttype']
         states = request.form['state']
-        return redirect(url_for('index'))
-    return render_template('submit.html', submit = submit)
+
 @app.route('/line')
 def line():
     line_labels=texas_period
