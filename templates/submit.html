@@ -1,14 +1,98 @@
 {%  extends 'layout.html' %}
 {%  block body %}
-    <style>
+
+<!DOCTYPE html>
+<head>
+    <link rel = "stylesheet" href = "style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+  </head><br><br><br>
+  <body style = " color: white ;
+  background-color: black">
+
+
+<style>
         select {
 border: 0;
 color: gray;
 font-weight: bold;
 *background: #58B14C;
 }
-    </style>
-    <form action="" method="post">
+</style>
+
+<center>
+    <h1 style="font-family: 'Nunito', sans-serif;">{{ title }}</h1>
+<div class="">
+  <canvas id="chart" width="1000" height="400"></canvas>
+</div>
+    
+    <script>
+
+      // bar chart data
+      var barData = {
+        labels : [
+          {% for item in labels %}
+            "{{ item }}",
+          {% endfor %}
+        ],
+
+        datasets : [{
+          fillColor: "rgba(255, 0, 0, 0.23)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(151,187,205,1)",
+          bezierCurve : false,
+          data : [
+        {% for item in values %}
+              {{ item }},
+            {% endfor %}]
+          }
+    ]
+      }
+
+      Chart.defaults.global.animationSteps = 50;
+      Chart.defaults.global.tooltipYPadding = 16;
+      Chart.defaults.global.tooltipCornerRadius = 0;
+      Chart.defaults.global.tooltipTitleFontStyle = "normal";
+      Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+      Chart.defaults.global.animationEasing = "easeOutBounce";
+      Chart.defaults.global.responsive = false;
+      Chart.defaults.global.scaleLineColor = "white";
+      Chart.defaults.global.scaleFontSize = 16;
+      Chart.defaults.global.scaleFontColor = "white"
+      
+      
+      // get bar chart canvas
+      var mychart = document.getElementById("chart").getContext("2d");
+
+      steps = 10
+      max = {{ max }}
+      // draw bar chart
+      var LineChartDemo = new Chart(mychart).Line(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: max,
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true, 
+        barShowStroke : true,
+        scaleShowLabels: true,
+        bezierCurve: false,
+      });
+  
+
+    </script>
+    <h2 style="font-family: 'Nunito', sans-serif;">Additional Statistics</h2style><br>
+    <h3 style="font-family: 'Nunito', sans-serif;">Average Oil Production Output: 2090830382028 <br><br>
+      Standard Deviation: 25.3% <br><br> Average Annual Increase: 25%
+    </h3>
+  </center>
+
+  <form action="" , method="POST">
     <div style="text-align:center">
     <div style="display:inline;"> Start: </div>
         <label for="lang"> <span>{{submit.start}}</span> </label>
@@ -134,6 +218,9 @@ font-weight: bold;
 <div style="text-align:center">
     <p><input type="submit"  class="btn btn-outline-secondary" value="Submit"></p>
 </div>
-
 </form>
+
+</body>
+</html>
+
 {%  endblock %}
