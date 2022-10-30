@@ -5,7 +5,7 @@ import pandas
 
 #loading Oil Wells Data
 api_key = "lLhgwKk3K0bBy3WCT8kUPbNErsjjRcJjO8h5ZUs3"
-response = requests.get("https://api.eia.gov/v2/natural-gas/prod/wells/data/?api_key=" + api_key + "&data[]=value")
+response = requests.get("https://api.eia.gov/v2/natural-gas/prod/oilwells/data/?api_key=lLhgwKk3K0bBy3WCT8kUPbNErsjjRcJjO8h5ZUs3")
 
 def jprint(obj):
     text = json.dumps(obj, sort_keys=True, indent= 4)
@@ -39,9 +39,23 @@ while (sorted != True):
 
 app = Flask(__name__)
 
-# @app.route("/")
-# def home():
-#     return render_template('index.html')
+@app.route("/")
+def home():
+     return render_template("home.html")
+"""
+class SubmitForm(Form):
+    startyear = StringField('StartYear')
+    endyear = StringField('EndYear')
+    selecttype = StringField('SelectType')
+"""
+@app.route('/submit',methods=['Get','POST'])
+def submit():
+    submit = {'start': '', 'end': '', 'selecttype': "",'state' : ""}
+    if request.method == 'POST':  #if submit form
+        start = request.form['start']
+        end = request.form['end']
+        selecttype = request.form['selecttype']
+        states = request.form['state']
 
 @app.route('/line')
 def line():
