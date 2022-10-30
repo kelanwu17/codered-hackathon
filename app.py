@@ -188,7 +188,7 @@ def line(start, end, selecttype, states):
 
 @app.route("/news")
 def news():
-    news_api = "https://newsapi.org/v2/everything?q=petroleum&from=2022-10-30&sortBy=relevency&apiKey=85ced64dc13d4ac3b1084221bf8ffd47"
+    news_api = "https://newsapi.org/v2/everything?q=petroleum&from=2022-10-30&sortBy=popularity&apiKey=85ced64dc13d4ac3b1084221bf8ffd47"
     response = requests.get(news_api)
     json_data = json.loads(response.text)
     news_source = []
