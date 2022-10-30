@@ -6,15 +6,17 @@
         <title>  MyFlaskapp </title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     </head>
-
+    
         {%  include 'includes/_navbar.html' %}
         <div class="container">
+        {%  include 'includes/_messages.html' %}
         {%  block body %}
         {%  endblock %}
 
 
         </div>
-    <body>
+    <body style="background-color:black; color: white">
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
     </body>
 </html>

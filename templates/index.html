@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-    <link rel = "stylesheet" href = "style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <meta charset="utf-8" />
-    <title>{{ title }}</title>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
-  </head><br><br><br>
-  
-  <body style = " color: white ;
-  background-color: black">
-    
+{%  extends 'layout.html' %}
 
+{%block graph %}
+        
     <center>
       <h1 style="font-family: 'Nunito', sans-serif;">{{ title }}</h1>
   <div class="">
@@ -81,5 +71,4 @@
         Standard Deviation: 25.3% <br><br> Average Annual Increase: 25%
       </h3>
     </center>
-  </body>
-  </html>
+    {% endblock %}

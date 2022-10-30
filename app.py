@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Markup, request, redirect, url_for
+from flask import Flask,flash, render_template, Markup, request, redirect, url_for
 import requests
 import json
 import pandas
@@ -52,8 +52,11 @@ def submit():
         states = request.form['state']
         #return redirect(url_for('line'))
         #   
+        if int(start) > int(end):
+            flash("The input parameters is not a valid",'danger')
+            return render_template('submit.html', submit = submit, start = "2001", end = "2003", selecttype = "gas pro", states = "TEXAS", title= "", max=100)
         result = convert(start, end, selecttype, states)
-        return render_template('submit.html', submit = submit, start = result[0], end = result[1], selecttype = result[2], states = result[3], title= result[4], max=result[5], labels=result[6], values=result[7])
+        return render_template('submit.html', submit = submit, start = result[0], end = result[1], selecttype = result[2], states = result[3], title= result[4], max=result[5], labels=result[6], values=result[7] ,avg_oil_prod = result[8], a_increase = result[9])
         #return redirect(url_for('line', start = start, end = end, selecttype = selecttype, states = states))
     start = "2001"
     end = "2003"
@@ -73,6 +76,7 @@ def convert(start, end, selecttype, states):
     response = requests.get("https://api.eia.gov/v2/natural-gas/prod/wells/data/?api_key=" + api_key + "&data[]=value")
     json_data = json.loads(response.text)
     title = ""
+    
     if selecttype == "gas pro": # if select is gas production
         response = requests.get("https://api.eia.gov/v2/natural-gas/prod/wells/data/?api_key=" + api_key + "&data[]=value")
         json_data = json.loads(response.text)
@@ -111,7 +115,22 @@ def convert(start, end, selecttype, states):
                 sorted = False
     max_value = max(texas_value)
     m = max_value//10
-    lst = [start,end,selecttype,states,title,m,texas_period,texas_value]
+    sum = 0
+    for i in range(len(texas_value)):
+        sum += int(texas_value[i])
+    avg_oil_prod = round(sum/len(texas_value),2)
+    
+    increase = []
+
+    sum = 0
+    for i in range(len(texas_value) - 1):
+       increase.append((int(texas_value[i+1]) - int(texas_value[i]) ) / int(texas_value[i]) * 100)
+    
+    for i in range(len(increase)):
+        sum = sum + increase[i]
+    a_increase = round(sum/len(increase),2)
+    
+    lst = [start,end,selecttype,states,title,m,texas_period,texas_value,avg_oil_prod, a_increase]
     return lst
 
 @app.route('/line/<start>/<end>/<selecttype>/<states>')
@@ -164,5 +183,31 @@ def line(start, end, selecttype, states):
     max_value = max(texas_value)
     return render_template('layout.html', start = start, end = end, selecttype = selecttype, states = states, title= title, max=max_value//10, labels=texas_period, values=texas_value)
 
+@app.route("/news")
+def news():
+    news_api = "https://newsapi.org/v2/everything?q=petroleum&from=2022-10-30&sortBy=relevency&apiKey=85ced64dc13d4ac3b1084221bf8ffd47"
+    response = requests.get(news_api)
+    json_data = json.loads(response.text)
+    news_source = []
+    news_headline = []
+    news_author = []
+    news_description = []
+    news_url = []
+    news_img = []
+
+    for i in range(4):
+        news_source.append(json_data["articles"][i]['source']['name'])
+        news_headline.append(json_data["articles"][i]['title'])
+        news_author.append(json_data["articles"][i]['author'])
+        news_description.append(json_data["articles"][i]['description'])
+        news_url.append(json_data["articles"][i]['url'])
+        news_img.append(json_data["articles"][i]['urlToImage'])
+
+    
+    
+    
+    return render_template("news.html", news_source = news_source, news_headline = news_headline, news_url = news_url, news_author = news_author, news_description = news_description, news_img = news_img)
+
 if __name__ == "__main__":
+    app.secret_key = 'secret123'
     app.run(debug=True)

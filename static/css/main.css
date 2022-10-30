@@ -1,0 +1,19 @@
+.news {
+    border-style:solid;
+    border-color:rgb(53, 53, 53);
+    padding:50px;
+    border-radius: 10px;
+    
+}
+.news_img {
+    width: 100px;
+    height:auto;
+}
+
+.intro {
+    font-size: 100px;
+}
+.check-it-out {
+    border-style: solid;
+    border-color: white;
+}
