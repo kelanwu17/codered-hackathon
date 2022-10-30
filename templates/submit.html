@@ -6,9 +6,9 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
 
 <div class="input-group">
-    <form action="/profile" method="post">
+    <form action="" method="post">
     <label for="lang"> <span>{{submit.start}}</span> </label>
-        <select name="state" id="lang" style="width:240px">
+        <select name="start" id="lang" style="width:240px">
         <!--    <option value="none" selected disabled hidden>Select an Option</option>    -->
         <option value="{{submit.start}}">  </option>
         <option value="2001">2001</option>
@@ -37,7 +37,7 @@
         <span class="input-group-text" id="">-</span>
     </div>
     <label for="lang"> <span>{{submit.end}}</span> </label>
-        <select name="state" id="lang" style="width:240px">
+        <select name="end" id="lang" style="width:240px">
         <!--    <option value="none" selected disabled hidden>Select an Option</option>    -->
         <option value="{{submit.end}}">  </option>
         <option value="2001">2001</option>
@@ -66,13 +66,13 @@
         <span class="input-group-text" id="">-</span>
     </div>
     <label for="lang"> <span>{{submit.select}}</span> </label>
-        <select name="state" id="lang">
+        <select name="selecttype" id="lang">
         <!--    <option value="none" selected disabled hidden>Select an Option</option>    -->
         <option value="{{submit.select}}">  </option>
-        <option value="gas pro">Number Of Gas Producing Oil Wells</option>
-        <option value="gas_withdr">Natural Gas Gross Withdrawals And Production</option>
-        <option value="oil_res">Crude Oil Proved Reserves</option>
-        <option value="oil_pro">Crude Oil Production</option>
+            <option value="gas pro">Number Of Gas Producing Oil Wells</option>
+            <option value="gas_withdr">Natural Gas Gross Withdrawals And Production</option>
+            <option value="oil_res">Crude Oil Proved Reserves</option>
+            <option value="oil_pro">Crude Oil Production</option>
         </select>
     <div class="input-group-prepend">
         <span class="input-group-text" id="">-</span>

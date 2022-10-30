@@ -1,11 +1,11 @@
-from flask import Flask, render_template, Markup
+from flask import Flask, render_template, Markup, request, redirect, url_for
 import requests
 import json
 import pandas
 
 #loading Oil Wells Data
 api_key = "lLhgwKk3K0bBy3WCT8kUPbNErsjjRcJjO8h5ZUs3"
-response = requests.get("https://api.eia.gov/v2/natural-gas/prod/oilwells/data/?api_key=lLhgwKk3K0bBy3WCT8kUPbNErsjjRcJjO8h5ZUs3")
+response = requests.get("https://api.eia.gov/v2/natural-gas/prod/wells/data/?api_key=" + api_key + "&data[]=value")
 
 def jprint(obj):
     text = json.dumps(obj, sort_keys=True, indent= 4)
@@ -13,7 +13,6 @@ def jprint(obj):
     
 
 json_data = json.loads(response.text)
-jprint(json_data["response"]["data"][0])
 #inputing data into lists
 texas_value = []
 texas_period = []
@@ -48,7 +47,7 @@ class SubmitForm(Form):
     endyear = StringField('EndYear')
     selecttype = StringField('SelectType')
 """
-@app.route('/submit',methods=['Get','POST'])
+@app.route('/submit',methods=['GET','POST'])
 def submit():
     submit = {'start': '', 'end': '', 'selecttype': "",'state' : ""}
     if request.method == 'POST':  #if submit form
@@ -56,12 +55,15 @@ def submit():
         end = request.form['end']
         selecttype = request.form['selecttype']
         states = request.form['state']
+        #return redirect(url_for('line'))
+        return redirect(url_for('line', start = start, end = end, selecttype = selecttype, states = states))
+    return render_template('submit.html', submit = submit)
 
-@app.route('/line')
-def line():
+@app.route('/line<start> <end> <selecttype> <states>')
+def line(start, end, selecttype, states):
     line_labels=texas_period
     line_values=texas_value
-    return render_template('index.html', title='Number of Gas Producing Oil Wells in Texas', max=17000, labels=texas_period, values=texas_value)
+    return render_template('index.html', start = start, end = end, selecttype = selecttype, states = states, title='Number of Gas Producing Oil Wells in Texas', max=17000, labels=texas_period, values=texas_value)
 
 if __name__ == "__main__":
     app.run(debug=True)
