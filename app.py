@@ -124,7 +124,10 @@ def convert(start, end, selecttype, states):
 
     sum = 0
     for i in range(len(texas_value) - 1):
-       increase.append((int(texas_value[i+1]) - int(texas_value[i]) ) / int(texas_value[i]) * 100)
+        if int(texas_value[i]) == 0:
+            increase.append((int(texas_value[i+1]) - int(texas_value[i]) )  * 100)
+        else:
+            increase.append((int(texas_value[i+1]) - int(texas_value[i]) ) / int(texas_value[i]) * 100)
     
     for i in range(len(increase)):
         sum = sum + increase[i]
