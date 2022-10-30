@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    head>
+    <head>
+    <link rel = "stylesheet" href = "style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <meta charset="utf-8" />
     <title>{{ title }}</title>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
-  </head>
+  </head><br><br><br>
   
-  <body>
-    <p>{{start}}</p>
-    <p>{{end}}</p>
-    <p>{{selecttype}}</p>
-    <p>{{states}}</p>
+  <body style = " color: white ;
+  background-color: black">
+    
 
     <center>
-      <h1>{{ title }}</h1>
+      <h1 style="font-family: 'Nunito', sans-serif;">{{ title }}</h1>
   <div class="">
     <canvas id="chart" width="1000" height="700"></canvas>
   </div>
@@ -29,7 +29,7 @@
           ],
   
           datasets : [{
-            fillColor: "rgba(151,187,205,0.2)",
+            fillColor: "rgba(255, 0, 0, 0.23)",
             strokeColor: "rgba(151,187,205,1)",
             pointColor: "rgba(151,187,205,1)",
             pointStrokeColor: "#fff",
@@ -51,8 +51,10 @@
         Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
         Chart.defaults.global.animationEasing = "easeOutBounce";
         Chart.defaults.global.responsive = false;
-        Chart.defaults.global.scaleLineColor = "black";
+        Chart.defaults.global.scaleLineColor = "white";
         Chart.defaults.global.scaleFontSize = 16;
+        Chart.defaults.global.scaleFontColor = "white"
+        
         
         // get bar chart canvas
         var mychart = document.getElementById("chart").getContext("2d");
@@ -66,13 +68,18 @@
           scaleStepWidth: 15000,
           scaleStartValue: 0,
           scaleShowVerticalLines: true,
-          scaleShowGridLines : true,
+          scaleShowGridLines : true, 
           barShowStroke : true,
           scaleShowLabels: true,
           bezierCurve: false,
         });
+    
   
       </script>
+      <h2 style="font-family: 'Nunito', sans-serif;">Additional Statistics</h2style><br>
+      <h3 style="font-family: 'Nunito', sans-serif;">Average Oil Production Output: 2090830382028 <br><br>
+        Standard Deviation: 25.3% <br><br> Average Annual Increase: 25%
+      </h3>
     </center>
   </body>
   </html>

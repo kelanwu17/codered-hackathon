@@ -1,14 +1,18 @@
-{% extends 'layout.html' %}
-
-{% block body %}
-
-
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
-
-<div class="input-group">
+{%  extends 'layout.html' %}
+{%  block body %}
+    <style>
+        select {
+border: 0;
+color: gray;
+font-weight: bold;
+*background: #58B14C;
+}
+    </style>
     <form action="" method="post">
-    <label for="lang"> <span>{{submit.start}}</span> </label>
-        <select name="start" id="lang" style="width:240px">
+    <div style="text-align:center">
+    <div style="display:inline;"> Start: </div>
+        <label for="lang"> <span>{{submit.start}}</span> </label>
+        <select name="start" id="lang" style="width:250px">
         <!--    <option value="none" selected disabled hidden>Select an Option</option>    -->
         <option value="{{submit.start}}">  </option>
         <option value="2001">2001</option>
@@ -31,13 +35,10 @@
         <option value="2018">2018</option>
         <option value="2019">2019</option>
         <option value="2020">2020</option>
-
         </select>
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="">-</span>
-    </div>
-    <label for="lang"> <span>{{submit.end}}</span> </label>
-        <select name="end" id="lang" style="width:240px">
+    <div style="display:inline;"> End: </div>
+        <label for="lang"> <span>{{submit.start}}</span> </label>
+        <select name="end" id="lang" style="width:250px">
         <!--    <option value="none" selected disabled hidden>Select an Option</option>    -->
         <option value="{{submit.end}}">  </option>
         <option value="2001">2001</option>
@@ -60,13 +61,11 @@
         <option value="2018">2018</option>
         <option value="2019">2019</option>
         <option value="2020">2020</option>
-
         </select>
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="">-</span>
-    </div>
-    <label for="lang"> <span>{{submit.select}}</span> </label>
-        <select name="selecttype" id="lang">
+
+        <div style="display:inline;"> Type: </div>
+        <label for="lang"> <span>{{submit.select}}</span> </label>
+        <select name="selecttype" id="lang" style="width:300px">
         <!--    <option value="none" selected disabled hidden>Select an Option</option>    -->
         <option value="{{submit.select}}">  </option>
             <option value="gas pro">Number Of Gas Producing Oil Wells</option>
@@ -74,66 +73,67 @@
             <option value="oil_res">Crude Oil Proved Reserves</option>
             <option value="oil_pro">Crude Oil Production</option>
         </select>
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="">-</span>
-    </div>
-    <label for="lang"> <span>{{submit.state}}</span> </label>
+        <div style="display:inline;"> State: </div>
+        <label for="lang"> <span>{{submit.state}}</span> </label>
             <select name="state" id="lang">
             <!--    <option value="none" selected disabled hidden>Select an Option</option>    -->
             <option value="{{submit.state}}">  </option>
-                <option value="AL">AL</option>
-                <option value="AK">AK</option>
-                <option value="AZ">AZ</option>
-                <option value="AR">AR</option>
-                <option value="CA">CA</option>
-                <option value="CO">CO</option>
-                <option value="CT">CT</option>
-                <option value="DE">DE</option>
-                <option value="DC">DC</option>
-                <option value="FL">FL</option>
-                <option value="GA">GA</option>
-                <option value="HI">HI</option>
-                <option value="ID">ID</option>
-                <option value="IL">IL</option>
-                <option value="IN">IN</option>
-                <option value="IA">IA</option>
-                <option value="KS">KS</option>
-                <option value="KY">KY</option>
-                <option value="LA">LA</option>
-                <option value="ME">ME</option>
-                <option value="MD">MD</option>
-                <option value="MA">MA</option>
-                <option value="MI">MI</option>
-                <option value="MN">MN</option>
-                <option value="MS">MS</option>
-                <option value="MO">MO</option>
-                <option value="MT">MT</option>
-                <option value="NE">NE</option>
-                <option value="NV">NV</option>
-                <option value="NH">NH</option>
-                <option value="NJ">NJ</option>
-                <option value="NM">NM</option>
-                <option value="NY">NY</option>
-                <option value="NC">NC</option>
-                <option value="ND">ND</option>
-                <option value="OH">OH</option>
-                <option value="OK">OK</option>
-                <option value="OR">OR</option>
-                <option value="PA">PA</option>
-                <option value="RI">RI</option>
-                <option value="SC">SC</option>
-                <option value="SD">SD</option>
-                <option value="TN">TN</option>
-                <option value="TX">TX</option>
-                <option value="UT">UT</option>
-                <option value="VT">VT</option>
-                <option value="VA">VA</option>
-                <option value="WA">WA</option>
-                <option value="WV">WV</option>
-                <option value="WI">WI</option>
-                <option value="WY">WY</option>
+            <option value="USA-AL">AL</option>
+            <option value="USA-AK">AK</option>
+            <option value="USA-AZ">AZ</option>
+            <option value="USA-AR">AR</option>
+            <option value="CALIFORNIA">CA</option>
+            <option value="COLORADO">CO</option>
+            <option value="USA-CT">CT</option>
+            <option value="USA-DE">DE</option>
+            <option value="USA-DC">DC</option>
+            <option value="FLORIDA">FL</option>
+            <option value="USA-GA">GA</option>
+            <option value="USA-HI">HI</option>
+            <option value="USA-ID">ID</option>
+            <option value="USA-IL">IL</option>
+            <option value="USA-IN">IN</option>
+            <option value="USA-IA">IA</option>
+            <option value="USA-KS">KS</option>
+            <option value="USA-KY">KY</option>
+            <option value="USA-LA">LA</option>
+            <option value="USA-ME">ME</option>
+            <option value="USA-MD">MD</option>
+            <option value="USA-MA">MA</option>
+            <option value="USA-MI">MI</option>
+            <option value="USA-MN">MN</option>
+            <option value="USA-MS">MS</option>
+            <option value="USA-MO">MO</option>
+            <option value="USA-MT">MT</option>
+            <option value="USA-NE">NE</option>
+            <option value="USA-NV">NV</option>
+            <option value="USA-NH">NH</option>
+            <option value="USA-NJ">NJ</option>
+            <option value="USA-NM">NM</option>
+            <option value="NEW YORK">NY</option>
+            <option value="USA-NC">NC</option>
+            <option value="USA-ND">ND</option>
+            <option value="OHIO">OH</option>
+            <option value="USA-OK">OK</option>
+            <option value="USA-OR">OR</option>
+            <option value="USA-PA">PA</option>
+            <option value="USA-RI">RI</option>
+            <option value="USA-SC">SC</option>
+            <option value="USA-SD">SD</option>
+            <option value="USA-TN">TN</option>
+            <option value="TEXAS">TX</option>
+            <option value="USA-UT">UT</option>
+            <option value="USA-VT">VT</option>
+            <option value="USA-VA">VA</option>
+            <option value="USA-WA">WA</option>
+            <option value="USA-WV">WV</option>
+            <option value="USA-WI">WI</option>
+            <option value="USA-WY">WY</option>
             </select>
-            <p><input type="submit" class="btn btn-primary" value="Submit"></p>
-        </form>
+    </div>
+<div style="text-align:center">
+    <p><input type="submit"  class="btn btn-outline-secondary" value="Submit"></p>
 </div>
-{% endblock  %}
+
+</form>
+{%  endblock %}
